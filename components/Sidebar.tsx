@@ -18,7 +18,10 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
 
   return (
     <aside className="sidebar">
-      <Link href="/" className='flex flex-row items-center justify-center gap-x-4'>
+      <Link
+        href="/"
+        className="flex flex-row items-center justify-center gap-x-4"
+      >
         <Image
           src="/assets/icons/locStore-icon.png"
           alt="logo"
@@ -33,7 +36,9 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
           height={52}
           className="lg:hidden"
         />
-        <div className="hidden lg:block font-bold text-3xl text-pretty antialiased animate-pulse text-brand-100">locStore</div>
+        <div className="hidden lg:block font-bold text-3xl text-pretty antialiased animate-pulse text-brand-100">
+          locStore
+        </div>
       </Link>
 
       <nav className="sidebar-nav">

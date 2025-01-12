@@ -7,7 +7,7 @@ import { Models } from 'node-appwrite';
 import React from 'react';
 
 const Page = async ({ searchParams, params }: SearchParamProps) => {
-  const type = ((await params)?.type as string) || '';  // { images, documents, media, others }
+  const type = ((await params)?.type as string) || ''; // { images, documents, media, others }
   const searchText = ((await searchParams)?.query as string) || '';
   const sort = ((await searchParams)?.sort as string) || '';
 
@@ -18,7 +18,7 @@ const Page = async ({ searchParams, params }: SearchParamProps) => {
 
   const currentUser = await fetchCurrentUser();
 
-  console.log("Current User ...", currentUser);
+  console.log('Current User ...', currentUser);
   console.log('Total Space ...', totalSpace);
   // console.log('Type & types', type, types);
 

@@ -102,25 +102,29 @@ export const verifySecret = async ({
 };
 
 export const fetchCurrentUser = async () => {
-  const { database, account } = await createSessionClient();
+  try {
+    const { database, account } = await createSessionClient();
 
-  const result = await account.get();
+    const result = await account.get();
 
-  // For debugging purpose...
-  console.log('accountId', result.$id);
+    // For debugging purpose...
+    console.log('accountId', result.$id);
 
-  const user = await database.listDocuments(
-    appwriteConfig.databaseId,
-    appwriteConfig.usersCollectionId,
-    [Query.equal('accountId', result.$id)],
-  );
+    const user = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      [Query.equal('accountId', result.$id)],
+    );
 
-  if (user.total < 0) return null;
+    if (user.total < 0) return null;
 
-  // For debugging purpose...
-  console.log('Fetched User Details', user);
+    // For debugging purpose...
+    console.log('Fetched User Details', user);
 
-  return parseStringify(user.documents[0]);
+    return parseStringify(user.documents[0]);
+  } catch (error) {
+    return parseStringify({ error: 'failed to fetch user' });
+  }
 };
 
 export const signOutUser = async () => {

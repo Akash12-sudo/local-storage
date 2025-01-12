@@ -11,7 +11,7 @@ const poppins = Poppins({
 const firaCode = Fira_Code({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'], // Add weights as needed
-  variable: '--font-fira-code',               // Define the CSS variable for the font
+  variable: '--font-fira-code', // Define the CSS variable for the font
 });
 
 export const metadata: Metadata = {

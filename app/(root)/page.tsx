@@ -5,12 +5,18 @@ import RecentFilesUploaded from '@/components/RecentFilesUploaded';
 import { fetchCurrentUser } from '@/lib/actions/user.action';
 import SignIn from '../(auth)/sign-in/page';
 import { redirect } from 'next/navigation';
+import { clear } from 'console';
 
 const Dashboard = async () => {
 
-  const [files, currentUser, totalSpace, typeSummary] = await Promise.all([
+  const currentUser = await fetchCurrentUser();
+
+  if(currentUser && currentUser.error) {
+    return redirect('/sign-in')
+  }
+
+  const [files, totalSpace, typeSummary] = await Promise.all([
     getFiles({ types: [], limit: 10 }),
-    fetchCurrentUser(),
     getTotalSpaceUsed(),
     getTypeDetailsSummary()
   ]);
@@ -18,9 +24,6 @@ const Dashboard = async () => {
   const types = ["images", 'documents', 'media', 'others'];
 
   // console.log('Types Summary... ', typeSummary);
-  if (!currentUser) {
-    redirect('/sign-in');
-  }
 
   return (
     <div className="dashboard-container">

@@ -6,7 +6,13 @@ import { convertFileSize } from '@/lib/utils';
 import FormattedDateTime from './FormattedDateTime';
 import ActionsDropdown from './ActionsDropdown';
 
-const Card = ({ file, currentUser }: { file: Models.Document; currentUser: Models.Document }) => {
+const Card = ({
+  file,
+  currentUser,
+}: {
+  file: Models.Document;
+  currentUser: Models.Document;
+}) => {
   console.log('File: ', file);
   return (
     <Link href={file.url} target="_blank" className="file-card">

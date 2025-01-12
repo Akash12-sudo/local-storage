@@ -32,7 +32,13 @@ import { usePathname } from 'next/navigation';
 import { FileDetails } from './ActionsModalContent';
 import { ShareInput } from './ActionsModalContent';
 
-const ActionsDropdown = ({ file, currentUser }: { file: Models.Document, currentUser: Models.Document  }) => {
+const ActionsDropdown = ({
+  file,
+  currentUser,
+}: {
+  file: Models.Document;
+  currentUser: Models.Document;
+}) => {
   const path = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -59,12 +65,14 @@ const ActionsDropdown = ({ file, currentUser }: { file: Models.Document, current
       rename: () =>
         renameFile({ fileId: file.$id, name, extension: file.extension, path }),
       share: () => {
-        const updatedEmails = emails.filter((email) => email !== currentUser.email)
+        const updatedEmails = emails.filter(
+          (email) => email !== currentUser.email,
+        );
         updateFileUsers({
           fileId: file.$id,
           emails: updatedEmails,
           path,
-        })
+        });
       },
       delete: () =>
         deleteFile({

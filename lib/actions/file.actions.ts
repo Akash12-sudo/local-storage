@@ -235,15 +235,13 @@ export async function getTotalSpaceUsed() {
   }
 }
 
-
 // ======================== TYPE SUMMARY
 export async function getTypeDetailsSummary() {
-
   try {
     const { database } = await createSessionClient();
     const currentUser = await fetchCurrentUser();
-    
-    if (!currentUser) throw new Error("No active user");
+
+    if (!currentUser) throw new Error('No active user');
 
     const files = await database.listDocuments(
       appwriteConfig.databaseId,
@@ -252,46 +250,62 @@ export async function getTypeDetailsSummary() {
     );
 
     const typeDetailsSummary = {
-      images: { size: 0, lastUpdated: "" },
-      documents: { size: 0, lastUpdated: "" },
-      media: { size: 0, lastUpdated: "" },
-      others: { size: 0, lastUpdated: "" }
-    }
+      images: { size: 0, lastUpdated: '' },
+      documents: { size: 0, lastUpdated: '' },
+      media: { size: 0, lastUpdated: '' },
+      others: { size: 0, lastUpdated: '' },
+    };
 
     files.documents.forEach((file) => {
       const fileType = file.type as FileType;
 
-      if(fileType === 'image') {
+      if (fileType === 'image') {
         typeDetailsSummary.images.size += file.size;
-        if(!typeDetailsSummary.images.lastUpdated || new Date(file.$updatedAt) > new Date(typeDetailsSummary.images.lastUpdated)){
+        if (
+          !typeDetailsSummary.images.lastUpdated ||
+          new Date(file.$updatedAt) >
+            new Date(typeDetailsSummary.images.lastUpdated)
+        ) {
           typeDetailsSummary.images.lastUpdated = file.$updatedAt;
         }
       }
 
-      if(fileType === 'document') {
+      if (fileType === 'document') {
         typeDetailsSummary.documents.size += file.size;
-        if(!typeDetailsSummary.documents.lastUpdated || new Date(file.$updatedAt) > new Date(typeDetailsSummary.documents.lastUpdated)){
+        if (
+          !typeDetailsSummary.documents.lastUpdated ||
+          new Date(file.$updatedAt) >
+            new Date(typeDetailsSummary.documents.lastUpdated)
+        ) {
           typeDetailsSummary.documents.lastUpdated = file.$updatedAt;
         }
       }
 
-      if(fileType === 'other') {
+      if (fileType === 'other') {
         typeDetailsSummary.others.size += file.size;
-        if(!typeDetailsSummary.others.lastUpdated || new Date(file.$updatedAt) > new Date(typeDetailsSummary.others.lastUpdated)){
+        if (
+          !typeDetailsSummary.others.lastUpdated ||
+          new Date(file.$updatedAt) >
+            new Date(typeDetailsSummary.others.lastUpdated)
+        ) {
           typeDetailsSummary.others.lastUpdated = file.$updatedAt;
         }
       }
 
-      if(fileType === 'video' || fileType === 'audio') {
+      if (fileType === 'video' || fileType === 'audio') {
         typeDetailsSummary.media.size += file.size;
-        if(!typeDetailsSummary.media.lastUpdated || new Date(file.$updatedAt) > new Date(typeDetailsSummary.media.lastUpdated)){
+        if (
+          !typeDetailsSummary.media.lastUpdated ||
+          new Date(file.$updatedAt) >
+            new Date(typeDetailsSummary.media.lastUpdated)
+        ) {
           typeDetailsSummary.media.lastUpdated = file.$updatedAt;
         }
       }
-    })
+    });
 
     return parseStringify(typeDetailsSummary);
   } catch (error) {
-    handleError(error, "Failed to get the type summary list!!")
+    handleError(error, 'Failed to get the type summary list!!');
   }
 }

@@ -7,7 +7,9 @@
 }
 
 body {
-  font-family: var(--font-fira-code); /* Set Fira Code as the default font for the body */
+  font-family: var(
+    --font-fira-code
+  ); /* Set Fira Code as the default font for the body */
 }
 
 @layer base {
@@ -486,6 +488,5 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-
   }
 }
