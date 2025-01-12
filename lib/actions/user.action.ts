@@ -102,7 +102,6 @@ export const verifySecret = async ({
 };
 
 export const fetchCurrentUser = async () => {
-  try {
     const { database, account } = await createSessionClient();
 
     const result = await account.get();
@@ -122,9 +121,6 @@ export const fetchCurrentUser = async () => {
     console.log('Fetched User Details', user);
 
     return parseStringify(user.documents[0]);
-  } catch (error) {
-    return parseStringify({ error: 'failed to fetch user' });
-  }
 };
 
 export const signOutUser = async () => {
