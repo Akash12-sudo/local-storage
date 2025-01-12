@@ -1,11 +1,17 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Poppins  } from 'next/font/google';
+import { Poppins, Fira_Code } from 'next/font/google';
 
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins',
+});
+
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'], // Add weights as needed
+  variable: '--font-fira-code',               // Define the CSS variable for the font
 });
 
 export const metadata: Metadata = {
@@ -21,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}  antialiased`}>{children}</body>
+      <body className={`${firaCode.variable}  antialiased`}>{children}</body>
     </html>
   );
 }

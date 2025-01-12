@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-fira-code: 'Fira Code', monospace;
+}
+
+body {
+  font-family: var(--font-fira-code); /* Set Fira Code as the default font for the body */
+}
+
 @layer base {
   * {
     @apply scroll-smooth;
