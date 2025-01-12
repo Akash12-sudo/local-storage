@@ -4,6 +4,7 @@ import SummaryCard from '@/components/SummaryCard';
 import RecentFilesUploaded from '@/components/RecentFilesUploaded';
 import { fetchCurrentUser } from '@/lib/actions/user.action';
 import SignIn from '../(auth)/sign-in/page';
+import { redirect } from 'next/navigation';
 
 const Dashboard = async () => {
 
@@ -18,7 +19,7 @@ const Dashboard = async () => {
 
   // console.log('Types Summary... ', typeSummary);
   if (!currentUser) {
-    // return router.push('/sign-in');
+    redirect('/sign-in');
   }
 
   return (
