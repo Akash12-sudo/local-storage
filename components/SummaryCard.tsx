@@ -16,7 +16,7 @@ const SummaryCard = ({
   lastUpdated: string;
 }) => {
 
-  const mapTypeIcon = {
+  const mapTypeIcon: { [key: string]: string } = {
     images: 'orange',
     documents: 'green',
     media: 'red',
