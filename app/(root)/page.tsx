@@ -6,13 +6,14 @@ import { fetchCurrentUser } from '@/lib/actions/user.action';
 import SignIn from '../(auth)/sign-in/page';
 import { redirect } from 'next/navigation';
 import { clear } from 'console';
+import { Suspense } from 'react';
 
 const Dashboard = async () => {
 
   const currentUser = await fetchCurrentUser();
 
   if(currentUser && currentUser.error) {
-    return redirect('/sign-in')
+    redirect('/sign-in')
   }
 
   const [files, totalSpace, typeSummary] = await Promise.all([
@@ -26,6 +27,7 @@ const Dashboard = async () => {
   // console.log('Types Summary... ', typeSummary);
 
   return (
+    <Suspense fallback={<div className='w-full h-screen animate-spin text-center justify-center items-center'>Loading...</div>}>
     <div className="dashboard-container">
       <section>
         <Chart used={totalSpace?.used || 0} />
@@ -38,6 +40,7 @@ const Dashboard = async () => {
       <RecentFilesUploaded files={files.documents} currentUser={currentUser} />
       {/* <SummaryCard type="image" totalSpace={totalSpace} /> */}
     </div>
+    </Suspense>
   );
 };
 
