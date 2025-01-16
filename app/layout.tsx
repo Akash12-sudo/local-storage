@@ -15,8 +15,8 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: 'locStore',
-  description: 'locStore - The only storage solution you need',
+  title: 'StashBox',
+  description: 'StashBox - The only storage solution you need',
 };
 
 export default function RootLayout({

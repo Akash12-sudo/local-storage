@@ -14,19 +14,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               height={82}
               className="h-auto"
             />
-            <p className="h1 text-white">locStore</p>
+            <p className="h1 text-white">StashBox</p>
           </div>
           <div className="space-y-5 text-white">
-            <h1 className="h1">Manage your files the best way</h1>
+            <h1 className="h1">Your files, organized effortlessly</h1>
             <p className="body-1">
-              This is a place where you can store all your documents.
+              Securely store, manage, and share your documents all in one place.
             </p>
           </div>
           <Image
             src="/assets/images/files.png"
             alt="Files"
-            width={342}
-            height={342}
+            width={320}
+            height={320}
             className="transition-all hover:rotate-2 hover:scale-105"
           />
         </div>

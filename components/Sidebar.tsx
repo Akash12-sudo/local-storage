@@ -37,7 +37,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
           className="lg:hidden"
         />
         <div className="hidden lg:block font-bold text-3xl text-pretty antialiased animate-pulse text-brand-100">
-          locStore
+          StashBox
         </div>
       </Link>
 
