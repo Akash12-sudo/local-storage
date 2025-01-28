@@ -25,7 +25,7 @@ const SummaryCard = ({
   return (
     <Link
       href={`/${type}`}
-      className="file-card hover:scale-105 duration-300 hover:animate-bounce"
+      className="file-card h-auto duration-1000 animate-pulse"
     >
       <div className="w-full flex flex-col items-center text-center antialiased text-pretty">
         <div className="w-full flex justify-between items-center text-end text-sm font-medium text-slate-400">

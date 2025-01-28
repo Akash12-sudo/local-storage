@@ -26,7 +26,7 @@ const RecentFilesUploaded = ({
   // console.log(files);
 
   return (
-    <div className="w-full h-full p-2 rounded-2xl shadow-sm flex flex-col bg-white cursor-pointer hover:animate-pulse duration-200 ">
+    <div className=" w-full h-full p-2 rounded-2xl shadow-sm flex flex-col bg-white cursor-pointer hover:animate-pulse duration-200 ">
       <div className="header text-2xl font-bold antialiased tracking-wide text-pretty border-b border-slate-100 ">
         Recent uploads
       </div>

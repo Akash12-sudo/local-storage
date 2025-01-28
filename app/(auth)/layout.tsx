@@ -22,13 +22,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               Securely store, manage, and share your documents all in one place.
             </p>
           </div>
-          <Image
+          {/* <Image
             src="/assets/images/files.png"
             alt="Files"
             width={320}
             height={320}
             className="transition-all hover:rotate-2 hover:scale-105"
-          />
+          /> */}
         </div>
       </section>
 
